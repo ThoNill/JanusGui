@@ -1,0 +1,5 @@
+package org.janus.gui.enums;
+
+public enum GuiField {
+	FOREGROUND, BACKGROUND, ENABLED, FOCUS, VISIBLE,STYLE, LABEL,FONT,TOOLTIP,WIDTH,HEIGHT,X,Y,VALUE
+}
