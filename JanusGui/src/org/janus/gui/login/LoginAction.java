@@ -33,7 +33,6 @@ public abstract class LoginAction implements Action, ElementConfigurable {
 
 	@Override
 	public void perform(DataContext context) {
-		System.out.println("Anmelden");
 		if (context instanceof PageContext) {
 			try {
 				PageContext pageContext = (PageContext) context;
