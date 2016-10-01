@@ -4,36 +4,36 @@ import java.io.Serializable;
 
 import javax.security.auth.login.LoginException;
 
-public abstract class LoginHandler implements Serializable{
+public abstract class LoginHandler implements Serializable {
 
-	protected String name;
-	protected char[] password;
-	protected boolean authenticated = false;
+    protected String name;
+    protected char[] password;
+    protected boolean authenticated = false;
 
-	public LoginHandler() {
-		super();
-	}
+    public LoginHandler() {
+        super();
+    }
 
-	public abstract void login() throws LoginException ;
+    public abstract void login() throws LoginException;
 
-	public void logout() throws LoginException {
-		authenticated = false;
-	};
-	
-	public boolean isAuthenticated() {
-		return authenticated ;
-	}
-	
-	public boolean hasCredential(String credential) {
-		return authenticated;
-	}
+    public void logout() throws LoginException {
+        authenticated = false;
+    };
 
-	protected void setName(String name) {
-		this.name = name;
-	}
+    public boolean isAuthenticated() {
+        return authenticated;
+    }
 
-	protected void setPassword(char[] password) {
-		this.password = password;
-	}
+    public boolean hasCredential(String credential) {
+        return authenticated;
+    }
+
+    protected void setName(String name) {
+        this.name = name;
+    }
+
+    protected void setPassword(char[] password) {
+        this.password = password;
+    }
 
 }

@@ -8,12 +8,10 @@ import java.util.List;
  * @author THOMAS
  * 
  */
-public interface RootGuiComponent extends GuiComponent  {
+public interface RootGuiComponent extends GuiComponent {
 
-	List<GuiComponent> getAllComponents();
-	
+    List<GuiComponent> getAllComponents();
 
-	void setAllComponents(List<GuiComponent> components) ;
-	
+    void setAllComponents(List<GuiComponent> components);
 
 }

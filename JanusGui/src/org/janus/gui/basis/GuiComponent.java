@@ -15,72 +15,70 @@ import org.janus.gui.enums.GuiType;
  */
 public interface GuiComponent extends Cloneable {
 
-	 GuiType getGuiType();
+    GuiType getGuiType();
 
-	 void setForeground(Color c);
+    void setForeground(Color c);
 
-	 Color getForeground();
+    Color getForeground();
 
-	 void setBackground(Color c);
+    void setBackground(Color c);
 
-	 Color getBackground();
+    Color getBackground();
 
-	 void setEnabled(boolean b);
+    void setEnabled(boolean b);
 
-	 boolean isEnabled();
+    boolean isEnabled();
 
-	 void setVisible(boolean b);
+    void setVisible(boolean b);
 
-	 boolean isVisible();
+    boolean isVisible();
 
-	 void setFocus(boolean b);
+    void setFocus(boolean b);
 
-	 boolean hasFocus();
+    boolean hasFocus();
 
-	 void setStyle(String t);
+    void setStyle(String t);
 
-	 String getStyle();
+    String getStyle();
 
-	 void setLabel(String t);
+    void setLabel(String t);
 
-	 String getLabel();
+    String getLabel();
 
-	 void setTooltip(String t);
+    void setTooltip(String t);
 
-	 String getTooltip();
+    String getTooltip();
 
-	 void setWidth(float w);
+    void setWidth(float w);
 
-	 float getWidth();
+    float getWidth();
 
-	 void setHeight(float w);
+    void setHeight(float w);
 
-	 float getHeight();
+    float getHeight();
 
-	 float getX();
+    float getX();
 
-	 void setX(float x);
+    void setX(float x);
 
-	 float getY();
+    float getY();
 
-	 void setY(float y);
+    void setY(float y);
 
-	 Font getFont();
+    Font getFont();
 
-	 void setFont(Font f);
+    void setFont(Font f);
 
-	 void setGuiValue(Serializable v);
+    void setGuiValue(Serializable v);
 
-	 Serializable getGuiValue();
+    Serializable getGuiValue();
 
-	 int getId();
+    int getId();
 
-	 void validate();
-	 
-	 void addComponent(GuiComponent comp);
-	 
-	 List<GuiComponent> getChildComponents();
+    void validate();
 
+    void addComponent(GuiComponent comp);
 
+    List<GuiComponent> getChildComponents();
 
 }

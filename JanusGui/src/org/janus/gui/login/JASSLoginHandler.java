@@ -12,90 +12,88 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 
+import org.apache.log4j.Logger;
+
 public class JASSLoginHandler extends LoginHandler implements CallbackHandler {
-	transient LoginContext loginContext;
-	
-	public JASSLoginHandler() throws LoginException {
-	}
-	
-	private LoginContext getContext() {
-		if (loginContext == null) {
-			try {
-				loginContext = new LoginContext(name,this);
-			} catch (LoginException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return loginContext;
-	}
+    public static final Logger LOG = Logger.getLogger(JASSLoginHandler.class);
+    transient LoginContext loginContext;
 
+    public JASSLoginHandler() throws LoginException {
+    }
 
-	@Override
-	public void login() throws LoginException {
-		getContext().login();
-	}
+    private LoginContext getContext() {
+        if (loginContext == null) {
+            try {
+                loginContext = new LoginContext(name, this);
+            } catch (LoginException e) {
+                // TODO Auto-generated catch block
+                LOG.error("Fehler", e);
+                ;
+            }
+        }
+        return loginContext;
+    }
 
-	@Override
-	public void logout() throws LoginException {
-		getContext().logout();
-	}
+    @Override
+    public void login() throws LoginException {
+        getContext().login();
+    }
 
-	@Override
-	 public void handle(Callback[] callbacks)
-			 throws IOException, UnsupportedCallbackException {
+    @Override
+    public void logout() throws LoginException {
+        getContext().logout();
+    }
 
-			   for (int i = 0; i < callbacks.length; i++) {
-			      if (callbacks[i] instanceof TextOutputCallback) {
+    @Override
+    public void handle(Callback[] callbacks) throws IOException,
+            UnsupportedCallbackException {
 
-			          // display the message according to the specified type
-			          TextOutputCallback toc = (TextOutputCallback)callbacks[i];
-			          switch (toc.getMessageType()) {
-			          case TextOutputCallback.INFORMATION:
-			              System.out.println(toc.getMessage());
-			              break;
-			          case TextOutputCallback.ERROR:
-			              System.out.println("ERROR: " + toc.getMessage());
-			              break;
-			          case TextOutputCallback.WARNING:
-			              System.out.println("WARNING: " + toc.getMessage());
-			              break;
-			          default:
-			              throw new IOException("Unsupported message type: " +
-			                                  toc.getMessageType());
-			          }
+        for (int i = 0; i < callbacks.length; i++) {
+            if (callbacks[i] instanceof TextOutputCallback) {
 
-			      } else if (callbacks[i] instanceof NameCallback) {
+                // display the message according to the specified type
+                TextOutputCallback toc = (TextOutputCallback) callbacks[i];
+                switch (toc.getMessageType()) {
+                case TextOutputCallback.INFORMATION:
+                    System.out.println(toc.getMessage());
+                    break;
+                case TextOutputCallback.ERROR:
+                    System.out.println("ERROR: " + toc.getMessage());
+                    break;
+                case TextOutputCallback.WARNING:
+                    System.out.println("WARNING: " + toc.getMessage());
+                    break;
+                default:
+                    throw new IOException("Unsupported message type: "
+                            + toc.getMessageType());
+                }
 
-			          // prompt the user for a username
-			          NameCallback nc = (NameCallback)callbacks[i];
+            } else if (callbacks[i] instanceof NameCallback) {
 
-			          // ignore the provided defaultName
-			          System.err.print(nc.getPrompt());
-			          nc.setName(name);
+                // prompt the user for a username
+                NameCallback nc = (NameCallback) callbacks[i];
 
-			      } else if (callbacks[i] instanceof PasswordCallback) {
+                // ignore the provided defaultName
+                System.err.print(nc.getPrompt());
+                nc.setName(name);
 
-			          // prompt the user for sensitive information
-			          PasswordCallback pc = (PasswordCallback)callbacks[i];
-			          System.err.print(pc.getPrompt());
-			          System.err.flush();
-			          pc.setPassword(password);
+            } else if (callbacks[i] instanceof PasswordCallback) {
 
-			      } else {
-			          throw new UnsupportedCallbackException
-			                  (callbacks[i], "Unrecognized Callback");
-			      }
-			   }
-			 }
+                // prompt the user for sensitive information
+                PasswordCallback pc = (PasswordCallback) callbacks[i];
+                System.err.print(pc.getPrompt());
+                System.err.flush();
+                pc.setPassword(password);
 
+            } else {
+                throw new UnsupportedCallbackException(callbacks[i],
+                        "Unrecognized Callback");
+            }
+        }
+    }
 
-	public Subject getSubject() {
-		return getContext().getSubject();
-	}
+    public Subject getSubject() {
+        return getContext().getSubject();
+    }
 
-	
-	
-	
-	
 }

@@ -4,26 +4,24 @@ import java.io.Serializable;
 
 import org.janus.dict.actions.ActionDictionaryContext;
 
+public class PageContext extends ActionDictionaryContext implements
+        Serializable {
+    private JanusSession session;
 
-public class PageContext extends ActionDictionaryContext implements Serializable{
-	private JanusSession session;
-	
-	public PageContext(JanusPage dict) {
-		super(dict);
-	}
+    public PageContext(JanusPage dict) {
+        super(dict);
+    }
 
-	public JanusPage getPage() {
-		return (JanusPage)getDataDescription();
-	}
-	
-	public JanusSession getSession() {
-		return session;
-	}
+    public JanusPage getPage() {
+        return (JanusPage) getDataDescription();
+    }
 
-	protected void setSession(JanusSession session) {
-		this.session = session;
-	}
+    public JanusSession getSession() {
+        return session;
+    }
 
-
+    protected void setSession(JanusSession session) {
+        this.session = session;
+    }
 
 }

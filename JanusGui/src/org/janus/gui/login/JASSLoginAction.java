@@ -2,20 +2,24 @@ package org.janus.gui.login;
 
 import javax.security.auth.login.LoginException;
 
-public class JASSLoginAction extends LoginAction{
+import org.apache.log4j.Logger;
 
-	public JASSLoginAction() {
-		
-	}
+public class JASSLoginAction extends LoginAction {
+    public static final Logger LOG = Logger.getLogger(JASSLoginAction.class);
 
-	@Override
-	protected LoginHandler getHandler() {
-		try {
-			return new JASSLoginHandler();
-		} catch (LoginException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    public JASSLoginAction() {
+
+    }
+
+    @Override
+    protected LoginHandler getHandler() {
+        try {
+            return new JASSLoginHandler();
+        } catch (LoginException e) {
+            LOG.error("Fehler", e);
+            ;
+        }
+        return null;
+    }
 
 }
