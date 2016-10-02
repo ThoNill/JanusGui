@@ -79,6 +79,6 @@ public interface GuiComponent extends Cloneable {
 
     void addComponent(GuiComponent comp);
 
-    List<GuiComponent> getChildComponents();
+    List<? extends GuiComponent> getChildComponents();
 
 }
