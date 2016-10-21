@@ -43,7 +43,7 @@ public class JanusApplication extends DataDescriptionImpl implements Action {
 
     @Override
     public void configure(DataDescription description) {
-        // TODO Auto-generated method stub
+        
 
     }
 

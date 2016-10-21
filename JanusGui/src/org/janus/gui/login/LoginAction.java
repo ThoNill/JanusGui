@@ -48,7 +48,7 @@ public abstract class LoginAction implements Action, ElementConfigurable {
                 handler.login();
                 session.setLogin(handler);
             } catch (LoginException e) {
-                // TODO Auto-generated catch block
+                
                 LOG.error("Fehler", e);
                 ;
             }

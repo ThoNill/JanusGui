@@ -26,7 +26,7 @@ public class JASSLoginHandler extends LoginHandler implements CallbackHandler {
             try {
                 loginContext = new LoginContext(name, this);
             } catch (LoginException e) {
-                // TODO Auto-generated catch block
+                
                 LOG.error("Fehler", e);
                 ;
             }

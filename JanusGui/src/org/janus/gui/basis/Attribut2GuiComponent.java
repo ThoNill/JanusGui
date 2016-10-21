@@ -12,7 +12,7 @@ import org.janus.gui.enums.GuiType;
 public class Attribut2GuiComponent {
 
     public Attribut2GuiComponent() {
-        // TODO Auto-generated constructor stub
+        
     }
 
     public static void setField(GuiComponent component, GuiField field,
