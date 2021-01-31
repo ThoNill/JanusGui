@@ -1,18 +1,14 @@
 package org.janus.gui.basis;
 
 import java.awt.Color;
-
-import org.jdom2.Attribute;
-import org.jdom2.Element;
 import java.awt.Font;
 import java.io.Serializable;
 import java.lang.reflect.Field;
-
 import java.lang.reflect.Modifier;
 import javax.swing.JComponent;
-
 import org.janus.gui.enums.GuiField;
 import org.janus.gui.enums.GuiType;
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 
 public class Attribut2GuiComponent {
